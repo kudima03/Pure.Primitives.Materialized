@@ -10,7 +10,7 @@ public sealed record MaterializedTimeTests
     public void MaterializeCorrectly()
     {
         Random random = new Random();
-        TimeOnly time = new TimeOnly(random.Next(23), 
+        TimeOnly time = new TimeOnly(random.Next(23),
             random.Next(59),
             random.Next(59),
             random.Next(999),
