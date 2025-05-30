@@ -10,10 +10,13 @@ public sealed record MaterializedTimeTests
     public void MaterializeCorrectly()
     {
         Random random = new Random();
-        TimeOnly currentTime = TimeOnly.FromDateTime(System.DateTime.Now);
+        TimeOnly time = new TimeOnly(random.Next(23), 
+            random.Next(59),
+            random.Next(59),
+            random.Next(999),
+            random.Next(999));
         IReadOnlyCollection<TimeOnly> randomTimes = Enumerable.Range(0, 1000)
-            .Select(_ => currentTime.AddHours(random.Next(100)).AddMinutes(random.Next())).ToArray();
-
+            .Select(_ => time.AddHours(random.Next(100)).AddMinutes(random.Next())).ToArray();
         Assert.Equal(randomTimes, randomTimes.Select(x => new MaterializedTime(new Time(x)).Value));
     }
 
