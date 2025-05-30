@@ -9,7 +9,7 @@ public sealed record MaterializedCharTests
     [Fact]
     public void MaterializeCorrectly()
     {
-        IEnumerable<char> chars = 
+        IEnumerable<char> chars =
             Enumerable.Range(char.MinValue, char.MaxValue).Select(x => (char)x).ToArray();
 
         IEnumerable<char> materializedChars = chars.Select(x => new Char(x)).Select(x => new MaterializedChar(x).Value);
