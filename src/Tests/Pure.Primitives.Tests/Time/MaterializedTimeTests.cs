@@ -1,9 +1,8 @@
-﻿using Pure.Primitives.Date;
-using Pure.Primitives.Time;
+﻿using Pure.Primitives.Time;
 
 namespace Pure.Primitives.Tests.Time;
 
-using Date = Primitives.Date.Date;
+using Time = Primitives.Time.Time;
 
 public sealed record MaterializedTimeTests
 {
@@ -11,9 +10,11 @@ public sealed record MaterializedTimeTests
     public void MaterializeCorrectly()
     {
         Random random = new Random();
-        IReadOnlyCollection<DateOnly> randomDates = Enumerable.Range(0, 1000).Select(_ => DateOnly.MinValue.AddMonths(random.Next(0, 120000))).ToArray();
+        TimeOnly currentTime = TimeOnly.FromDateTime(System.DateTime.Now);
+        IReadOnlyCollection<TimeOnly> randomTimes = Enumerable.Range(0, 1000)
+            .Select(_ => currentTime.AddHours(random.Next(100)).AddMinutes(random.Next())).ToArray();
 
-        Assert.Equal(randomDates, randomDates.Select(x => new MaterializedDate(new Date(x)).Value));
+        Assert.Equal(randomTimes, randomTimes.Select(x => new MaterializedTime(new Time(x)).Value));
     }
 
     [Fact]
