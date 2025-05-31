@@ -3,9 +3,9 @@ using Pure.Primitives.Time;
 
 namespace Pure.Primitives.Tests.DateTime;
 
-using Time = Primitives.Time.Time;
 using Date = Primitives.Date.Date;
 using DateTime = Primitives.DateTime.DateTime;
+using Time = Primitives.Time.Time;
 
 public sealed record MaterializedDateTimeTests
 {
