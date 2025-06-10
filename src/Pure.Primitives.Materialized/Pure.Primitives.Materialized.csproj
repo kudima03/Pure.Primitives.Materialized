@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>Pure.Primitives.Materialized</PackageId>
+    <RootNamespace>Pure.Primitives.Materialized</RootNamespace>
+    <AssemblyName>Pure.Primitives.Materialized</AssemblyName>
+    <Authors>Dmitry Kurochkin</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/kudima03/Pure.Primitives.Materialized</PackageProjectUrl>
+  </PropertyGroup>
+
 </Project>
