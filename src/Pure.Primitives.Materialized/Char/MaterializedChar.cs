@@ -1,6 +1,6 @@
 ﻿using Pure.Primitives.Abstractions.Char;
 
-namespace Pure.Primitives.Materialized.Guid;
+namespace Pure.Primitives.Materialized.Char;
 
 public sealed record MaterializedChar
 {
