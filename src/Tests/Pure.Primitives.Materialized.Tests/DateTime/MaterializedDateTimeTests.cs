@@ -1,8 +1,7 @@
-﻿using Pure.Primitives.Materialized.DateTime;
-using Pure.Primitives.Time;
+﻿using Pure.Primitives.DateTime;
 using RandomDataGenerator.FieldOptions;
 using RandomDataGenerator.Randomizers;
-using MaterializedTime = Pure.Primitives.Materialized.Time.MaterializedTime;
+using MaterializedDateTime = Pure.Primitives.Materialized.DateTime.MaterializedDateTime;
 
 namespace Pure.Primitives.Materialized.Tests.DateTime;
 
@@ -30,12 +29,12 @@ public sealed record MaterializedDateTimeTests
     [Fact]
     public void ThrowExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new MaterializedTime(new CurrentTime()).GetHashCode());
+        Assert.Throws<NotSupportedException>(() => new MaterializedDateTime(new CurrentDateTime()).GetHashCode());
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new MaterializedTime(new CurrentTime()).ToString());
+        Assert.Throws<NotSupportedException>(() => new MaterializedDateTime(new CurrentDateTime()).ToString());
     }
 }
