@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Materialized.Guid;
+﻿using Pure.Primitives.Materialized.Char;
 
 namespace Pure.Primitives.Materialized.Tests.Char;
 
