@@ -19,7 +19,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="RandomDataGenerator.Net" Version="1.0.19" />
+    <PackageReference Include="RandomDataGenerator.Net" Version="1.0.19.1" />
   </ItemGroup>
 
   <ItemGroup>
