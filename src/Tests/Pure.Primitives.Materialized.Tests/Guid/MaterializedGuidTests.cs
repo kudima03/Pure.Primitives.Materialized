@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Materialized.Guid;
+using Pure.Primitives.Materialized.Guid;
 
 namespace Pure.Primitives.Materialized.Tests.Guid;
 
@@ -9,10 +9,14 @@ public sealed record MaterializedGuidTests
     [Fact]
     public void MaterializeIntCorrectly()
     {
-        IEnumerable<System.Guid> guids = Enumerable.Range(0, 100).Select(_ => System.Guid.NewGuid()).ToArray();
+        IEnumerable<System.Guid> guids =
+        [
+            .. Enumerable.Range(0, 100).Select(_ => System.Guid.NewGuid()),
+        ];
 
-        IEnumerable<System.Guid> materializedGuids =
-            guids.Select(x => new Guid(x)).Select(x => new MaterializedGuid(x).Value);
+        IEnumerable<System.Guid> materializedGuids = guids
+            .Select(x => new Guid(x))
+            .Select(x => new MaterializedGuid(x).Value);
 
         Assert.Equal(guids, materializedGuids);
     }
@@ -20,12 +24,16 @@ public sealed record MaterializedGuidTests
     [Fact]
     public void ThrowExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new MaterializedGuid(new Guid()).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new MaterializedGuid(new Guid()).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new MaterializedGuid(new Guid()).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new MaterializedGuid(new Guid()).ToString()
+        );
     }
 }

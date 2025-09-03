@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.DateTime;
+using Pure.Primitives.Abstractions.DateTime;
 using Pure.Primitives.Materialized.Date;
 using Pure.Primitives.Materialized.Time;
 
@@ -14,7 +14,10 @@ public sealed record MaterializedDateTime
     }
 
     public System.DateTime Value =>
-        new System.DateTime(new MaterializedDate(_value).Value, new MaterializedTime(_value).Value);
+        new System.DateTime(
+            new MaterializedDate(_value).Value,
+            new MaterializedTime(_value).Value
+        );
 
     public override int GetHashCode()
     {

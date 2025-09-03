@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.String;
+using Pure.Primitives.Abstractions.String;
 
 namespace Pure.Primitives.Materialized.String;
 

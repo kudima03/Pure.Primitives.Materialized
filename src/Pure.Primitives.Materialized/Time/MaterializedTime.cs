@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Time;
+using Pure.Primitives.Abstractions.Time;
 
 namespace Pure.Primitives.Materialized.Time;
 
@@ -11,12 +11,14 @@ public sealed record MaterializedTime
         _value = value;
     }
 
-    public TimeOnly Value => new TimeOnly(
-        _value.Hour.NumberValue,
-        _value.Minute.NumberValue,
-        _value.Second.NumberValue,
-        _value.Millisecond.NumberValue,
-        _value.Microsecond.NumberValue);
+    public TimeOnly Value =>
+        new TimeOnly(
+            _value.Hour.NumberValue,
+            _value.Minute.NumberValue,
+            _value.Second.NumberValue,
+            _value.Millisecond.NumberValue,
+            _value.Microsecond.NumberValue
+        );
 
     public override int GetHashCode()
     {

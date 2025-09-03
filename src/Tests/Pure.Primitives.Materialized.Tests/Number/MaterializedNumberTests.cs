@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Number;
+using Pure.Primitives.Number;
 using Double = Pure.Primitives.Number.Double;
 
 namespace Pure.Primitives.Materialized.Tests.Number;
@@ -10,10 +10,11 @@ public sealed record MaterializedNumberTests
     {
         Random random = new Random();
 
-        IEnumerable<int> numbers = Enumerable.Range(-100, 200).ToArray();
+        IEnumerable<int> numbers = [.. Enumerable.Range(-100, 200)];
 
-        IEnumerable<int> materializedNumbers =
-            numbers.Select(x => new Int(x)).Select(x => new Materialized.Number.MaterializedNumber<int>(x).Value);
+        IEnumerable<int> materializedNumbers = numbers
+            .Select(x => new Int(x))
+            .Select(x => new Materialized.Number.MaterializedNumber<int>(x).Value);
 
         Assert.Equal(numbers, materializedNumbers);
     }
@@ -23,10 +24,14 @@ public sealed record MaterializedNumberTests
     {
         Random random = new Random();
 
-        IEnumerable<double> numbers = Enumerable.Range(0, 200).Select(_ => random.NextDouble()).ToArray();
+        IEnumerable<double> numbers =
+        [
+            .. Enumerable.Range(0, 200).Select(_ => random.NextDouble()),
+        ];
 
-        IEnumerable<double> materializedNumbers =
-            numbers.Select(x => new Double(x)).Select(x => new Materialized.Number.MaterializedNumber<double>(x).Value);
+        IEnumerable<double> materializedNumbers = numbers
+            .Select(x => new Double(x))
+            .Select(x => new Materialized.Number.MaterializedNumber<double>(x).Value);
 
         Assert.Equal(numbers, materializedNumbers);
     }
@@ -36,10 +41,14 @@ public sealed record MaterializedNumberTests
     {
         Random random = new Random();
 
-        IEnumerable<long> numbers = Enumerable.Range(0, 200).Select(_ => random.NextInt64()).ToArray();
+        IEnumerable<long> numbers =
+        [
+            .. Enumerable.Range(0, 200).Select(_ => random.NextInt64()),
+        ];
 
-        IEnumerable<long> materializedNumbers =
-            numbers.Select(x => new Long(x)).Select(x => new Materialized.Number.MaterializedNumber<long>(x).Value);
+        IEnumerable<long> materializedNumbers = numbers
+            .Select(x => new Long(x))
+            .Select(x => new Materialized.Number.MaterializedNumber<long>(x).Value);
 
         Assert.Equal(numbers, materializedNumbers);
     }
@@ -47,12 +56,16 @@ public sealed record MaterializedNumberTests
     [Fact]
     public void ThrowExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new Materialized.Number.MaterializedNumber<int>(new Int(10)).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new Materialized.Number.MaterializedNumber<int>(new Int(10)).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new Materialized.Number.MaterializedNumber<int>(new Int(10)).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new Materialized.Number.MaterializedNumber<int>(new Int(10)).ToString()
+        );
     }
 }

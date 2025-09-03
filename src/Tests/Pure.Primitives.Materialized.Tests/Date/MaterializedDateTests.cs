@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Date;
+using Pure.Primitives.Date;
 using MaterializedDate = Pure.Primitives.Materialized.Date.MaterializedDate;
 
 namespace Pure.Primitives.Materialized.Tests.Date;
@@ -18,12 +18,16 @@ public sealed record MaterializedDateTests
     [Fact]
     public void ThrowExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new MaterializedDate(new CurrentDate()).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new MaterializedDate(new CurrentDate()).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new MaterializedDate(new CurrentDate()).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new MaterializedDate(new CurrentDate()).ToString()
+        );
     }
 }
