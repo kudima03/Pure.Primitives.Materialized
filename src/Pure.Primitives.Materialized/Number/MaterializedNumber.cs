@@ -1,8 +1,9 @@
-﻿using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Materialized.Number;
 
-public sealed record MaterializedNumber<T> where T : System.Numerics.INumber<T>
+public sealed record MaterializedNumber<T>
+    where T : System.Numerics.INumber<T>
 {
     private readonly INumber<T> _number;
 

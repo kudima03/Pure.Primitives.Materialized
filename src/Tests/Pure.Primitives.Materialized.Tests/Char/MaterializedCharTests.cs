@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Materialized.Char;
+using Pure.Primitives.Materialized.Char;
 
 namespace Pure.Primitives.Materialized.Tests.Char;
 
@@ -10,9 +10,13 @@ public sealed record MaterializedCharTests
     public void MaterializeCorrectly()
     {
         IEnumerable<char> chars =
-            Enumerable.Range(char.MinValue, char.MaxValue).Select(x => (char)x).ToArray();
+        [
+            .. Enumerable.Range(char.MinValue, char.MaxValue).Select(x => (char)x),
+        ];
 
-        IEnumerable<char> materializedChars = chars.Select(x => new Char(x)).Select(x => new MaterializedChar(x).Value);
+        IEnumerable<char> materializedChars = chars
+            .Select(x => new Char(x))
+            .Select(x => new MaterializedChar(x).Value);
 
         Assert.Equal(chars, materializedChars);
     }
@@ -20,12 +24,16 @@ public sealed record MaterializedCharTests
     [Fact]
     public void ThrowExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new MaterializedChar(new Char('A')).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new MaterializedChar(new Char('A')).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new MaterializedChar(new Char('A')).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new MaterializedChar(new Char('A')).ToString()
+        );
     }
 }

@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Date;
+using Pure.Primitives.Abstractions.Date;
 
 namespace Pure.Primitives.Materialized.Date;
 
@@ -11,7 +11,12 @@ public sealed record MaterializedDate
         _value = value;
     }
 
-    public DateOnly Value => new DateOnly(_value.Year.NumberValue, _value.Month.NumberValue, _value.Day.NumberValue);
+    public DateOnly Value =>
+        new DateOnly(
+            _value.Year.NumberValue,
+            _value.Month.NumberValue,
+            _value.Day.NumberValue
+        );
 
     public override int GetHashCode()
     {
