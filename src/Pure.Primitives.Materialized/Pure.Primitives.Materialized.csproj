@@ -18,7 +18,9 @@
     <PackageProjectUrl>https://github.com/kudima03/Pure.Primitives.Materialized</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.8" />
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.8">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Pure.Primitives.Abstractions" Version="4.3.0" />
   </ItemGroup>
 </Project>
