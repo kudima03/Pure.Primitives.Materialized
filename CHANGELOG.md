@@ -6,6 +6,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [0.2.0] — 2026-11-11
+
+### Added
+
+- Support for `net11.0` (the library now targets `net8.0`, `net9.0`,
+  `net10.0` and `net11.0`).
+
+### Changed
+
+- Updated `Pure.Primitives.Abstractions` to 4.4.0.
+- Build, publish workflow and devcontainer moved to the .NET 11 SDK.
+
+---
+
 ## [0.1.0] — 2025-06-11
 
 ### Added
